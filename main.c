@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 4)
     {
-        printf("Usage: %s <compress|decompress> <input file> <output file>\n", argv[0]);
+        printf("Usage: %s <compress|decompress> <input_file> <output_file>\n", argv[0]);
         return 1;
     }
 

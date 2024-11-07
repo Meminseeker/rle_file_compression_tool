@@ -15,20 +15,16 @@ void compressFile(const char *inputFile, const char *outputFile)
     char currentChar, nextChar;
     int count = 1;
 
-    // Get the first char
     currentChar = fgetc(in);
 
-    // Loop through the file
     while ((nextChar = fgetc(in)) != EOF)
     {
-        // If the current char is the same as the next char, increment count
         if (currentChar == nextChar)
         {
             count++;
         }
         else
         {
-            // Else, write the char and the count to the output file
             if (count > 1)
             {
                 fprintf(out, "$%c%d", currentChar, count);
@@ -38,7 +34,6 @@ void compressFile(const char *inputFile, const char *outputFile)
                 fprintf(out, "$%c", currentChar);
             }
 
-            // set current char to next char and count to 1
             currentChar = nextChar;
             count = 1;
         }
@@ -54,7 +49,6 @@ void compressFile(const char *inputFile, const char *outputFile)
         fprintf(out, "$%c", currentChar);
     }
 
-    // Close the files
     fclose(in);
     fclose(out);
 

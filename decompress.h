@@ -50,6 +50,6 @@ void decompressFile(const char *inputFile, const char *outputFile)
     fclose(out);
 
     printf("File decompressed successfully\n");
-    
+
     return;
 }
