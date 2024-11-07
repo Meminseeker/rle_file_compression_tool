@@ -27,6 +27,17 @@ To build and compile the code, run the following command before first usage:
 make
 ```
 
+__Important Notice:__ The default compiler is chosen to be `clang`. If you want to change the compiler used, edit the `CC` variable with compiler you want to use in the `./Makefile` file.
+
+E.g.,
+
+```Makefile
+# Compiler
+CC = gcc
+
+# Rest of the file...
+```
+
 ## Usage
 
 ### Compress a File
