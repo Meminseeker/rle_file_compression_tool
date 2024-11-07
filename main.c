@@ -1,10 +1,11 @@
 #include <stdio.h>
-#include "compress_file.h"
+#include "compress.h"
+#include "decompress.h"
 
 int main()
 {
-    printf("Hello, World number %d!\n", 5);
-    printf("The character from compressFile is: %c\n", compressFile());
+    compressFile("input.txt", "compressed.rle");
+    decompressFile("compressed.rle", "output.txt");
 
     return 0;
 }
