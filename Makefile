@@ -7,22 +7,26 @@ CFLAGS = -Wall -Wextra -g
 # Target executable
 TARGET = main
 
+# Source and object files
+SRCS = $(wildcard *.c)
+OBJS = $(SRCS:.c=.o)
+
 # Default rule
 all: run
 
-run: $(TARGET)
+run: clean $(TARGET)
 	./$(TARGET)
 
 compile: $(TARGET)
 
 # Rule to build the target
-$(TARGET): main.o
-	$(CC) $(CFLAGS) -o $(TARGET) main.o
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
-# Rule to create object file
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c
+# Pattern rule to build object files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Rule to clean up
 clean:
-	rm -f $(TARGET) *.o
+	rm -f $(TARGET) $(OBJS)
