@@ -31,11 +31,11 @@ void compressFile(const char *inputFile, const char *outputFile)
             // Else, write the char and the count to the output file
             if (count > 1)
             {
-                fprintf(out, "%c%d", currentChar, count);
+                fprintf(out, "$%c%d", currentChar, count);
             }
             else
             {
-                fprintf(out, "%c", currentChar);
+                fprintf(out, "$%c", currentChar);
             }
 
             // set current char to next char and count to 1
@@ -47,11 +47,11 @@ void compressFile(const char *inputFile, const char *outputFile)
     // Handle the last char
     if (count > 1)
     {
-        fprintf(out, "%c%d", currentChar, count);
+        fprintf(out, "$%c%d", currentChar, count);
     }
     else
     {
-        fprintf(out, "%c", currentChar);
+        fprintf(out, "$%c", currentChar);
     }
 
     // Close the files

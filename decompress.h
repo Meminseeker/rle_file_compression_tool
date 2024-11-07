@@ -16,19 +16,21 @@ void decompressFile(const char *inputFile, const char *outputFile)
     char currentChar;
     int count;
 
-    // Loop through the file
     while ((currentChar = fgetc(in)) != EOF)
     {
-        // If the current char is a digit, continue
-        if (isdigit(currentChar))
+        currentChar = fgetc(in);
+
+        char digit = fgetc(in);
+
+        // If the char is a '$', then it is a single char
+        if (digit == '$' || digit == EOF)
         {
+            fputc(currentChar, out);
+            ungetc(digit, in);
             continue;
         }
 
-        // Else, read the following consecutive digits if any
-        // Convert the digits to an integer
         count = 0;
-        char digit = fgetc(in);
         while (isdigit(digit))
         {
             count = count * 10 + (digit - '0');
@@ -37,15 +39,13 @@ void decompressFile(const char *inputFile, const char *outputFile)
 
         ungetc(digit, in);
 
-        // Write the char to the output file count times
-        if (count == 0) count = 1;
+        // Write the char to the output file for count times
         for (int i = 0; i < count; i++)
         {
             fputc(currentChar, out);
         }
     }
 
-    // Close the files
     fclose(in);
     fclose(out);
 
