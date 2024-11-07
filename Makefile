@@ -12,7 +12,7 @@ SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 
 # Default rule
-all: run
+all: clean compile
 
 run: clean $(TARGET)
 	./$(TARGET)
