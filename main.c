@@ -4,8 +4,8 @@
 
 int main()
 {
-    compressFile("input.txt", "compressed.rle");
-    decompressFile("compressed.rle", "output.txt");
+    compressFile("input.txt", "compressed.txt");
+    decompressFile("compressed.txt", "output.txt");
 
     return 0;
 }
